@@ -1,0 +1,54 @@
+<mat-card>
+    <div class="example-container">
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Bank Account</mat-label>
+            <input matInput placeholder="Account" [(ngModel)]="account">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Select an option</mat-label>
+            <mat-select [(value)]="selected">
+                <mat-option disabled>None</mat-option>
+                <mat-option value="withdrawn">Withdrawn</mat-option>
+                <mat-option value="deposit">Deposit</mat-option>
+                <mat-option value="loan">Loan</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Amount</mat-label>
+            <input matInput placeholder="Amount" [(ngModel)]="amount">
+        </mat-form-field>
+
+        <br>
+
+        <div *ngIf="selected === 'loan'; then thenBlock"></div>
+
+        <ng-template #thenBlock>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Interest</mat-label>
+                <input matInput placeholder="Interest" [(ngModel)]="interest">
+            </mat-form-field>
+
+            <br>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>Payments</mat-label>
+                <input matInput placeholder="Payments" [(ngModel)]="payments">
+            </mat-form-field>
+
+        </ng-template>
+
+        <br>
+
+        <button (click)="onSubmit()" mat-button color="primary">Submit</button>
+
+        <br>
+    </div>
+</mat-card>
